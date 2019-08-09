@@ -85,7 +85,6 @@ protected void setUp() {
 			  //Generate a random port from valid port numbers (max = 65535)
 			  int portNum = rnd.nextInt(65534);
 			  String randomPort = ":" + portNum;
-			  //System.out.println(randomPort);
 			  
 			  //Generate a random path from valid path characters
 			  StringBuilder newPath = new StringBuilder("/");
@@ -96,7 +95,6 @@ protected void setUp() {
 				  newPath.append(PathChars.charAt(index));
 			  } 
 			  String randomPath = newPath.toString();
-			  //System.out.println(randomPath); 
 			  
 			  //Randomly select index from each valid part array
 			  int schemeIndex = rnd.nextInt(3);
@@ -106,12 +104,11 @@ protected void setUp() {
 			  
 			  //Build a URL from test part arrays plus randomly generated port and path
 			  String testURL = validScheme[schemeIndex] + validAuthority[authIndex] + randomPort + randomPath + validQuery[queryIndex];
-			  //System.out.println(testURL);
 			  
 			  UrlValidator urlVal = new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES);
 			  
 			  boolean result = urlVal.isValid(testURL);
-			  //assertTrue(result);
+			  //assertTrue(result); 
 			  if (expected == result) {
 				  System.out.println(". " + testURL);
 			  }
