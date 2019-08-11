@@ -66,18 +66,6 @@ protected void setUp() {
 				  					""
 		  };
 		  
-		  String [] validOption = {	"/test1",
-				  						"/t123",
-				  						"/$23",
-				  						"/test1/",
-				  						"",
-				  						"/test1/file",
-				  						"/t123/file",
-				  						"/test1//file"
-				  						
-				  	
-		  };
-		  
 		  //Loop to generate URLs and test
 		  for (int i = 0; i < numberOfTests; i++) {
 
@@ -100,7 +88,6 @@ protected void setUp() {
 			  int schemeIndex = rnd.nextInt(3);
 			  int authIndex = rnd.nextInt(8);
 			  int queryIndex = rnd.nextInt(3);
-			  int optIndex = rnd.nextInt(8);
 			  
 			  //Build a URL from test part arrays plus randomly generated port and path
 			  String testURL = validScheme[schemeIndex] + validAuthority[authIndex] + randomPort + randomPath + validQuery[queryIndex];
@@ -108,7 +95,8 @@ protected void setUp() {
 			  UrlValidator urlVal = new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES);
 			  
 			  boolean result = urlVal.isValid(testURL);
-			  //assertTrue(result); 
+			  urlVal.isValid(testURL);
+			  assertEquals(testURL, expected, result); 
 			  if (expected == result) {
 				  System.out.println(". " + testURL);
 			  }
